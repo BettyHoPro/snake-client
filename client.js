@@ -9,7 +9,7 @@ const connect = function() {
   // interpret incoming data as text
   conn.setEncoding('utf8'); 
   process.stdin.setEncoding('utf-8');
-
+  
   conn.on('data', (data) => {
     console.log('Server says: ', data);
   });
@@ -17,7 +17,11 @@ const connect = function() {
   conn.on('connect', () => {
     console.log('Successfully connected to game server');
     conn.write('Name: BBH');
+    conn.write("Move: down");
+    conn.write("Move: right");
+    conn.write('Move: up');
+    conn.write('Move: up');
   })
   return conn;
 }
-module.exports = connect;
+module.exports = { connect };
