@@ -1,28 +1,30 @@
+const { COMMAND } = require("./constants");
 let connection;
 
 const setupInput = function(conn) {
   const stdin = process.stdin; //take input from user
   connection = conn; // using connection
   const handleUserInput = function (data) {
-    if (data === "w") {
-      conn.write('Move: up');
-    } else if (data === "s") {
-      conn.write('Move: down');
-    } else if (data === "a") {
-      conn.write('Move: left');
-    } else if (data === "d") {
-      conn.write("Move: right");
-    } else if (data === "q") {
-      conn.write("Say: I am gonna save you!");
-    } else if (data === "z") {
-      conn.write("Say: how's going?");
-    } else if (data === "c") {
-      conn.write("Say: Covid-19 will gone");
-    } else if (data === "l") {
-      conn.write("Say: Don't forgot to eat")
-    } else if (data === "1") {
-      conn.write("Say: ");//clear the canned message
-    }
+    // if (data === "w") {
+    //   conn.write('Move: up');
+    // } else if (data === "s") {
+    //   conn.write('Move: down');
+    // } else if (data === "a") {
+    //   conn.write('Move: left');
+    // } else if (data === "d") {
+    //   conn.write("Move: right");
+    // } else if (data === "q") {
+    //   conn.write("Say: I am gonna save you!");
+    // } else if (data === "z") {
+    //   conn.write("Say: how's going?");
+    // } else if (data === "c") {
+    //   conn.write("Say: Covid-19 will gone");
+    // } else if (data === "l") {
+    //   conn.write("Say: Don't forgot to eat")
+    // } else if (data === "1") {
+    //   conn.write("Say: ");//clear the canned message
+    // }
+    conn.write(COMMAND[data]); //callback
     if (data === '\u0003') {
       process.exit();
     }///ctril c  call
